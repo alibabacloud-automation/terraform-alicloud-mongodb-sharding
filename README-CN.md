@@ -3,25 +3,18 @@ Terraform module which creates MongoDB Sharding instance on Alibaba Cloud
  terraform-alicloud-mongodb-sharding
 =====================================================================
 
-English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/blob/master/README-CN.md)
 
-Terraform module which creates MongoDB sharding instance resources on Alibaba Cloud
+本 Module 用于在阿里云的 VPC 下创建一个[MongoDB shrading云数据库](https://help.aliyun.com/document_detail/26558.html). 
 
-These types of resources are supported:
+本 Module 支持创建以下资源:
 
-* [Alicloud_mongodb_sharding_instance](https://www.terraform.io/docs/providers/alicloud/r/mongodb_sharding_instance.html)
+* [MongoDB sharding 数据库实例_(mongodb_sharding_instance)](https://www.terraform.io/docs/providers/alicloud/r/mongodb_sharding_instance.html)
 
-----------------------
+## Terraform 版本
 
-## Terraform versions
+本模板要求使用版本 Terraform 0.12。
 
-This module requires Terraform 0.12.
-
-## Usage
------
-You can use this in your terraform template with the following steps.
-
-1. Adding a module resource to your template, e.g. main.tf
+## 用法
 
 ```hcl
 module "mongodb_sharding_example" {
@@ -52,30 +45,30 @@ module "mongodb_sharding_example" {
 }
 ```
 
-## Examples
+## 示例
 
-* [MongoDB sharding_example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/tree/master/examples/mongodb_sharding)
+* [MongoDB sharding 实例完整创建示例创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/tree/master/examples/mongodb_sharding)
 
-## Module
+## 模块
 
 * [mongodb_sharding](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb_sharding)
 
-## Notes
+## 注意事项
 
-* This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`.
-If you have not set them yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+* 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file` 中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置.
 
-
-Authors
----------
+作者
+-------
 Created and maintained by Yi Jincheng(yi785301535@163.com), He Guimin(@xiaozhu36, heguimin36@163.com)
 
-License
+许可
 ----
 Apache 2 Licensed. See LICENSE for full details.
 
-Reference
+参考
 ---------
 * [Terraform-Provider-Alicloud Github](https://github.com/terraform-providers/terraform-provider-alicloud)
 * [Terraform-Provider-Alicloud Release](https://releases.hashicorp.com/terraform-provider-alicloud/)
 * [Terraform-Provider-Alicloud Docs](https://www.terraform.io/docs/providers/alicloud/index.html)
+
+
