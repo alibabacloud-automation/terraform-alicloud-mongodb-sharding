@@ -50,9 +50,9 @@ module "mongodb_sharding" {
 
 ## 模块
 
-* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
-* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
-* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
+* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/modules/mongodb-sharding-3.4-wiredtiger)
+* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/modules/mongodb-sharding-4.0-wiredtiger)
+* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/modules/mongodb-sharding-4.2-wiredtiger)
 
 ## 注意事项
 
