@@ -30,18 +30,6 @@ variable "skip_region_validation" {
 # mongodb_sharding_instance
 ############################
 
-variable "engine_version" {
-  description = "The version number of the database. Valid value: 3.4, 4.0. "
-  type        = string
-  default     = ""
-}
-
-variable "storage_engine" {
-  description = "Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger. "
-  type        = string
-  default     = "WiredTiger"
-}
-
 variable "name" {
   description = "The name of DB instance. It a string of 2 to 256 characters. "
   type        = string
@@ -87,19 +75,19 @@ variable "security_ip_list" {
 
 variable "mongo_list" {
   description = "The mongo-node count can be purchased is in range of [2, 32]. "
-  type        = list(map(string))
+  type        = list(map(any))
   default     = []
 }
 
 variable "shard_list" {
   description = "The shard-node count can be purchased is in range of [2, 32]. "
-  type        = list(map(string))
+  type        = list(map(any))
   default     = []
 }
 
 variable "backup_period" {
   description = "MongoDB sharding Instance backup period. It is required when backup_time was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] "
-  type        = list(any)
+  type        = list(string)
   default     = []
 }
 

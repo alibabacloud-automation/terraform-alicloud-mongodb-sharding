@@ -58,7 +58,9 @@ module "mongodb_sharding_example" {
 
 ## Module
 
-* [mongodb_sharding](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb_sharding)
+* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
+* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
+* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
 
 ## Notes
 
