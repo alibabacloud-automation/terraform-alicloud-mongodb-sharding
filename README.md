@@ -1,6 +1,5 @@
-Terraform module which creates MongoDB Sharding instance on Alibaba Cloud
-
- terraform-alicloud-mongodb-sharding
+Terraform module which creates MongoDB Sharding instance on Alibaba Cloud  
+terraform-alicloud-mongodb-sharding
 =====================================================================
 
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/blob/master/README-CN.md)
@@ -24,8 +23,8 @@ You can use this in your terraform template with the following steps.
 1. Adding a module resource to your template, e.g. main.tf
 
 ```hcl
-module "mongodb_sharding_example" {
-  source = "terraform-alicloud-modules/mongodb_sharding/alicloud"
+module "mongodb_sharding" {
+  source = "terraform-alicloud-modules/mongodb-sharding/alicloud"
   region = var.region
   engine_version       = "3.4"
   storage_engine       = "WiredTiger"
@@ -56,7 +55,7 @@ module "mongodb_sharding_example" {
 
 * [MongoDB sharding_example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/tree/master/examples/mongodb_sharding)
 
-## Module
+## Modules
 
 * [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
 * [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
