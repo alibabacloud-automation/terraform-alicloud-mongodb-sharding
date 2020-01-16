@@ -2,7 +2,7 @@ Terraform module which creates MongoDB Sharding instance on Alibaba Cloud
 terraform-alicloud-mongodb-sharding
 =====================================================================
 
-English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/blob/master/README-CN.md)
+English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/blob/master/README-CN.md)
 
 Terraform module which creates MongoDB sharding instance resources on Alibaba Cloud
 
@@ -53,13 +53,13 @@ module "mongodb_sharding" {
 
 ## Examples
 
-* [MongoDB sharding_example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/tree/master/examples/mongodb_sharding)
+* [MongoDB sharding example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/mongodb-sharding)
 
 ## Modules
 
-* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
-* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
-* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
+* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
+* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
+* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
 
 ## Notes
 
