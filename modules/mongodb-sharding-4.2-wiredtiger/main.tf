@@ -6,11 +6,15 @@ provider "alicloud" {
   skip_region_validation  = var.skip_region_validation
   configuration_source    = "terraform-alicloud-modules/mongodb-sharding"
 }
-
-resource "alicloud_mongodb_sharding_instance" "this" {
-  count                = var.existing_instance_id != "" ? 0 : var.create ? 1 : 0
-  engine_version       = var.engine_version
-  storage_engine       = var.storage_engine
+locals {
+  engine_version = "4.2"
+  storage_engine = "WiredTiger"
+}
+module "mongodb_sharding" {
+  source               = "../.."
+  region               = var.region
+  engine_version       = local.engine_version
+  storage_engine       = local.storage_engine
   name                 = var.name
   instance_charge_type = var.instance_charge_type
   period               = var.period
@@ -20,18 +24,6 @@ resource "alicloud_mongodb_sharding_instance" "this" {
   security_ip_list     = var.security_ip_list
   backup_period        = var.backup_period
   backup_time          = var.backup_time
-  dynamic "mongo_list" {
-    for_each = var.mongo_list
-    content {
-      node_class = lookup(mongo_list.value, "node_class")
-    }
-  }
-  dynamic "shard_list" {
-    for_each = var.shard_list
-    content {
-      node_class   = lookup(shard_list.value, "node_class")
-      node_storage = lookup(shard_list.value, "node_storage")
-    }
-  }
+  mongo_list           = var.mongo_list
+  shard_list           = var.shard_list
 }
-

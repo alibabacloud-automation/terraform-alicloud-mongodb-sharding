@@ -18,13 +18,10 @@ resource "alicloud_vswitch" "this" {
   cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 12)
 }
 module "mongodb_sharding_example" {
-  source               = "../../modules/mongodb-sharding"
+  source               = "../../modules/mongodb-sharding-3.4-wiredtiger"
   region               = var.region
-  engine_version       = "3.4"
-  storage_engine       = "WiredTiger"
   name                 = "my-mongodb-sharding"
   instance_charge_type = "PostPaid"
-  period               = 1
   zone_id              = data.alicloud_zones.default.zones.0.multi_zone_ids.0
   vswitch_id           = alicloud_vswitch.this.id
   account_password     = "shard123456"
