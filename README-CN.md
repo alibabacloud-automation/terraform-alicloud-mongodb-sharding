@@ -46,13 +46,13 @@ module "mongodb_sharding" {
 
 ## 示例
 
-* [MongoDB sharding 实例完整创建示例创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb_sharding/tree/master/examples/mongodb_sharding)
+* [MongoDB sharding 实例完整创建示例创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/mongodb-sharding)
 
 ## 模块
 
-* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
-* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
-* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb_sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
+* [mongodb-sharding-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-3.4-wiredtiger)
+* [mongodb-sharding-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.0-wiredtiger)
+* [mongodb-sharding-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb-sharding/tree/mongodb/modules/mongodb-sharding-4.2-wiredtiger)
 
 ## 注意事项
 
