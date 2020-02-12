@@ -4,18 +4,18 @@ variable "region" {
 provider "alicloud" {
   region = var.region
 }
-data "alicloud_vpcs" "default" {
-  is_default = true
-}
 data "alicloud_zones" "default" {
   available_resource_creation = "MongoDB"
   multi                       = true
 }
+data "alicloud_vpcs" "default" {
+  is_default = true
+}
 resource "alicloud_vswitch" "this" {
-  name              = "mongodb_vpc"
+  name              = "mongodb_vsw"
   availability_zone = data.alicloud_zones.default.zones.0.multi_zone_ids.0
   vpc_id            = data.alicloud_vpcs.default.vpcs.0.id
-  cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 12)
+  cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 2)
 }
 module "mongodb_sharding_example" {
   source               = "../../modules/mongodb-sharding-3.4-wiredtiger"
@@ -40,4 +40,15 @@ module "mongodb_sharding_example" {
     }, {
     node_class = "dds.mongos.mid"
   }]
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMongodbSharding"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["Mongodb", "AccCms"]
 }

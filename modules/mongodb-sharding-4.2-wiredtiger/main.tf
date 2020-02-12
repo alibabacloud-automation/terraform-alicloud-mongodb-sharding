@@ -1,5 +1,4 @@
 provider "alicloud" {
-  version                 = ">=1.64.0"
   profile                 = var.profile != "" ? var.profile : null
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
   region                  = var.region != "" ? var.region : null
@@ -11,8 +10,12 @@ locals {
   storage_engine = "WiredTiger"
 }
 module "mongodb_sharding" {
-  source               = "../.."
-  region               = var.region
+  source = "../.."
+  region = var.region
+
+  ############################
+  # Mongodb Sharding instance
+  ############################
   engine_version       = local.engine_version
   storage_engine       = local.storage_engine
   name                 = var.name
@@ -26,4 +29,18 @@ module "mongodb_sharding" {
   backup_time          = var.backup_time
   mongo_list           = var.mongo_list
   shard_list           = var.shard_list
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name               = var.alarm_rule_name
+  alarm_rule_silence_time       = var.alarm_rule_silence_time
+  enable_alarm_rule             = var.enable_alarm_rule
+  alarm_rule_effective_interval = var.alarm_rule_effective_interval
+  alarm_rule_statistics         = var.alarm_rule_statistics
+  alarm_rule_period             = var.alarm_rule_period
+  alarm_rule_operator           = var.alarm_rule_operator
+  alarm_rule_threshold          = var.alarm_rule_threshold
+  alarm_rule_triggered_count    = var.alarm_rule_triggered_count
+  alarm_rule_contact_groups     = var.alarm_rule_contact_groups
 }

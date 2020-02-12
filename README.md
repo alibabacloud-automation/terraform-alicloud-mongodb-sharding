@@ -9,51 +9,93 @@ Terraform module which creates MongoDB sharding instance resources on Alibaba Cl
 These types of resources are supported:
 
 * [Alicloud_mongodb_sharding_instance](https://www.terraform.io/docs/providers/alicloud/r/mongodb_sharding_instance.html)
+* [Alicloud_cms_alarm](https://www.terraform.io/docs/providers/alicloud/r/cms_alarm.html)
 
 ----------------------
 
 ## Terraform versions
 
-This module requires Terraform 0.12.
+This module requires Terraform 0.12 and Terraform Provider Alicloud 1.56.0+.
 
 ## Usage
 -----
-You can use this in your terraform template with the following steps.
 
-1. Adding a module resource to your template, e.g. main.tf
+For new instance
 
 ```hcl
 module "mongodb_sharding" {
   source = "terraform-alicloud-modules/mongodb-sharding/alicloud"
-  region = var.region
-  engine_version       = "3.4"
-  storage_engine       = "WiredTiger"
-  name                 = "my-mongodb-sharding"
-  instance_charge_type = "PostPaid"
-  zone_id              = "cn-shanghai-h"
-  vswitch_id           = "vsw-uf6ocf31lyoqxxxxxxxxx"
-  account_password     = "shard123456"
-  security_ip_list     = ["1.1.1.1", "2.2.2.2", "3.3.3.3"]
-  backup_period        = ["Monday", "Wednesday", "Friday"]
-  backup_time          = "02:00Z-03:00Z"
-  shard_list = [{
+  region = "cn-shanghai"
+  
+   ####################
+   # Mongodb Instance
+   ####################
+   engine_version       = "4.0"
+   storage_engine       = "WiredTiger"
+   name                 = "my-mongodb-sharding"
+   instance_charge_type = "PostPaid"
+   security_ip_list     = ["1.1.1.1", "2.2.2.2", "3.3.3.3"]
+   zone_id              = "cn-shanghai-h"
+   vswitch_id           = "vsw-uf6ocf31lyoqxxxxxxxxx"
+   account_password     = "mongo123"
+   backup_period        = ["Monday", "Wednesday", "Friday"]
+   backup_time          = "02:00Z-03:00Z"
+   shard_list = [{
      node_class   = "dds.shard.mid"
      node_storage = 10
-     }, {
+   }, {
      node_class   = "dds.shard.mid"
      node_storage = 10
    }]
-  mongo_list = [{
+   mongo_list = [{
      node_class = "dds.mongos.mid"
-     }, {
+   }, {
      node_class = "dds.mongos.mid"
    }]
+  
+    #############
+    # cms_alarm
+    #############
+    alarm_rule_name            = "CmsAlarmForMongodbSharding"
+    alarm_rule_statistics      = "Average"
+    alarm_rule_period          = 300
+    alarm_rule_operator        = "<="
+    alarm_rule_threshold       = 35
+    alarm_rule_triggered_count = 2
+    alarm_rule_contact_groups  = ["Mongodb", "AccCms"]
+}
+```
+
+For existing instance
+
+```hcl
+module "mongodb_sharding_example" {
+  source = "terraform-alicloud-modules/mongodb-sharding/alicloud"
+  region = "cn-shanghai"
+
+  ####################
+  # Mongodb Instance
+  ####################
+  existing_instance_id = "dds-uf6eea55ddxxxxxx"
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMongodbSharding"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["Mongodb", "AccCms"]
 }
 ```
 
 ## Examples
 
-* [MongoDB sharding example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/mongodb-sharding)
+* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/complete)
+* [using-existing-mongodb-sharding-instance](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/using-existing-mongodb-sharding-instance)
+* [using-submodule-complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/tree/master/examples/using-submodule-complete)
 
 ## Modules
 
