@@ -11,6 +11,15 @@ locals {
 data "alicloud_vpcs" "default" {
   is_default = true
 }
+
+resource "alicloud_cms_alarm_contact_group" "Mongodb" {
+  alarm_contact_group_name = "Mongodb"
+}
+
+resource "alicloud_cms_alarm_contact_group" "AccCms" {
+  alarm_contact_group_name = "AccCms"
+}
+
 module "mongodb_sharding_example" {
   source = "../../"
   region = var.region
