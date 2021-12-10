@@ -1,4 +1,10 @@
-## 1.3.0 (Unreleased)
+## 1.4.0 (Unreleased)
+## 1.3.0 (December 10, 2021)
+
+ENHANCEMENTS:
+
+- Removes the provider setting and improves the Readme [GH-10](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb-sharding/pull/10)
+
 ## 1.2.0 (February 11, 2020)
 
 IMPROVEMENTS:
