@@ -5,6 +5,7 @@ output "this_mongodb_sharding_instance_id" {
   description = "The ID of the MongoDB sharding instance. "
   value       = local.this_instance_id
 }
+
 output "this_mongodb_sharding_instance_engine_version" {
   description = "The engine version of the MongoDB sharding instance. "
   value       = concat(alicloud_mongodb_sharding_instance.this.*.engine_version, [""])[0]
@@ -42,22 +43,22 @@ output "this_mongodb_sharding_instance_vswitch_id" {
 
 output "this_mongodb_sharding_instance_security_ip_list" {
   description = "IP whitelist of MongoDB sharding instances. "
-  value       = alicloud_mongodb_sharding_instance.this.*.security_ip_list
+  value       = concat(alicloud_mongodb_sharding_instance.this.*.security_ip_list, [""])[0]
 }
 
 output "this_mongodb_sharding_instance_mongo_list" {
   description = "The mongo-node count can be purchased. "
-  value       = alicloud_mongodb_sharding_instance.this.*.mongo_list
+  value       = concat(alicloud_mongodb_sharding_instance.this.*.mongo_list, [""])[0]
 }
 
 output "this_mongodb_sharding_instance_shard_list" {
   description = "MongoDB sharding Instance backup period. "
-  value       = alicloud_mongodb_sharding_instance.this.*.shard_list
+  value       = concat(alicloud_mongodb_sharding_instance.this.*.shard_list, [""])[0]
 }
 
 output "this_mongodb_sharding_instance_backup_period" {
   description = "MongoDB sharding instance backup time. "
-  value       = alicloud_mongodb_sharding_instance.this.*.backup_period
+  value       = concat(alicloud_mongodb_sharding_instance.this.*.backup_period, [""])[0]
 }
 
 output "this_mongodb_sharding_instance_backup_time" {
@@ -95,7 +96,7 @@ output "this_alarm_rule_metric" {
 
 output "this_alarm_rule_dimensions" {
   description = "Map of the resources associated with the alarm rule. "
-  value       = alicloud_cms_alarm.cpu_utilization.*.dimensions
+  value       = concat(alicloud_cms_alarm.cpu_utilization.*.dimensions, [""])[0]
 }
 
 output "this_alarm_rule_period" {
@@ -172,4 +173,3 @@ output "this_alarm_rule_intranet_out_status" {
   description = "The current alarm intranet out rule status. "
   value       = concat(alicloud_cms_alarm.intranet_out.*.status, [""])[0]
 }
-

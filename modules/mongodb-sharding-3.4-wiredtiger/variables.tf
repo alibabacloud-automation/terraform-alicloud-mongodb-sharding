@@ -1,27 +1,26 @@
 #################
 # Provider
 #################
-
 variable "profile" {
-  description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable. "
+  description = "(Deprecated from version 1.4.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable. "
   type        = string
   default     = ""
 }
 
 variable "shared_credentials_file" {
-  description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used. "
+  description = "(Deprecated from version 1.4.0) This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used. "
   type        = string
   default     = ""
 }
 
 variable "region" {
-  description = "The region used to launch this module resources. "
+  description = "(Deprecated from version 1.4.0) The region used to launch this module resources. "
   type        = string
   default     = ""
 }
 
 variable "skip_region_validation" {
-  description = "Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). "
+  description = "(Deprecated from version 1.4.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). "
   type        = bool
   default     = false
 }
@@ -29,7 +28,6 @@ variable "skip_region_validation" {
 ############################
 # mongodb_sharding_instance
 ############################
-
 variable "name" {
   description = "The name of DB instance. It a string of 2 to 256 characters. "
   type        = string
@@ -72,6 +70,17 @@ variable "security_ip_list" {
   default     = []
 }
 
+variable "backup_period" {
+  description = "MongoDB sharding Instance backup period. It is required when backup_time was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] "
+  type        = list(string)
+  default     = []
+}
+
+variable "backup_time" {
+  description = "MongoDB sharding instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not specified, the system will generate a default, like `23:00Z-24:00Z`. "
+  type        = string
+  default     = ""
+}
 
 variable "mongo_list" {
   description = "The mongo-node count can be purchased is in range of [2, 32]. "
@@ -83,18 +92,6 @@ variable "shard_list" {
   description = "The shard-node count can be purchased is in range of [2, 32]. "
   type        = list(map(any))
   default     = []
-}
-
-variable "backup_period" {
-  description = "MongoDB sharding Instance backup period. It is required when backup_time was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] "
-  type        = list(string)
-  default     = []
-}
-
-variable "backup_time" {
-  description = "MongoDB sharding instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not specified, the system will generate a default, like `23:00Z-24:00Z`. "
-  type        = string
-  default     = ""
 }
 
 variable "existing_instance_id" {
@@ -118,16 +115,34 @@ variable "alarm_rule_name" {
   default     = ""
 }
 
-variable "alarm_rule_period" {
-  description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
+variable "alarm_rule_silence_time" {
+  description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
   type        = number
-  default     = 300
+  default     = 86400
+}
+
+variable "enable_alarm_rule" {
+  description = "Whether to enable alarm rule. Default to true. "
+  type        = bool
+  default     = true
+}
+
+variable "alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
+  type        = string
+  default     = "0:00-2:00"
 }
 
 variable "alarm_rule_statistics" {
   description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
   type        = string
   default     = "Average"
+}
+
+variable "alarm_rule_period" {
+  description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
+  type        = number
+  default     = 300
 }
 
 variable "alarm_rule_operator" {
@@ -152,22 +167,4 @@ variable "alarm_rule_contact_groups" {
   description = "List contact groups of the alarm rule, which must have been created on the console. "
   type        = list(string)
   default     = []
-}
-
-variable "alarm_rule_silence_time" {
-  description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
-  type        = number
-  default     = 86400
-}
-
-variable "alarm_rule_effective_interval" {
-  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
-  type        = string
-  default     = "0:00-2:00"
-}
-
-variable "enable_alarm_rule" {
-  description = "Whether to enable alarm rule. Default to true. "
-  type        = bool
-  default     = true
 }
