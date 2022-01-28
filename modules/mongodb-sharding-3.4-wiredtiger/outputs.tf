@@ -66,7 +66,6 @@ output "this_mongodb_sharding_instance_backup_time" {
   value       = module.mongodb_sharding.this_mongodb_sharding_instance_backup_time
 }
 
-
 ############
 # cms alarm
 ############

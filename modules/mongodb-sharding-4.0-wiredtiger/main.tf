@@ -1,17 +1,9 @@
-provider "alicloud" {
-  profile                 = var.profile != "" ? var.profile : null
-  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
-  region                  = var.region != "" ? var.region : null
-  skip_region_validation  = var.skip_region_validation
-  configuration_source    = "terraform-alicloud-modules/mongodb-sharding"
-}
 locals {
   engine_version = "4.0"
   storage_engine = "WiredTiger"
 }
 module "mongodb_sharding" {
   source = "../.."
-  region = var.region
 
   ############################
   # Mongodb Sharding instance
@@ -33,9 +25,9 @@ module "mongodb_sharding" {
   #############
   # cms_alarm
   #############
+  enable_alarm_rule             = var.enable_alarm_rule
   alarm_rule_name               = var.alarm_rule_name
   alarm_rule_silence_time       = var.alarm_rule_silence_time
-  enable_alarm_rule             = var.enable_alarm_rule
   alarm_rule_effective_interval = var.alarm_rule_effective_interval
   alarm_rule_statistics         = var.alarm_rule_statistics
   alarm_rule_period             = var.alarm_rule_period
