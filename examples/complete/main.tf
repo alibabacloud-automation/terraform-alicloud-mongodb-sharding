@@ -1,3 +1,7 @@
+provider "alicloud" {
+  region = "ap-southeast-1"
+}
+
 data "alicloud_mongodb_zones" "default" {
 }
 
