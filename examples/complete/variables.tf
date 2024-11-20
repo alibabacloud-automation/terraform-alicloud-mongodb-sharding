@@ -48,12 +48,10 @@ variable "mongo_list" {
   type        = list(map(string))
   default = [
     {
-      node_class   = "dds.mongos.mid"
-      node_storage = "20"
+      node_class = "dds.mongos.mid",
     },
     {
-      node_class   = "dds.mongos.mid"
-      node_storage = "20"
+      node_class = "dds.mongos.mid",
     }
   ]
 }
@@ -61,13 +59,17 @@ variable "mongo_list" {
 variable "shard_list" {
   description = "The shard-node count can be purchased is in range of [2, 32]. "
   type        = list(map(string))
-  default = [{
-    node_class   = "dds.shard.mid"
-    node_storage = "20"
-    }, {
-    node_class   = "dds.shard.mid"
-    node_storage = "20"
-  }]
+  default = [
+    {
+      "node_class"   = "dds.shard.mid",
+      "node_storage" = "10",
+    },
+    {
+      "node_class"        = "dds.shard.standard",
+      "node_storage"      = "20",
+      "readonly_replicas" = "1",
+    }
+  ]
 }
 
 #############
