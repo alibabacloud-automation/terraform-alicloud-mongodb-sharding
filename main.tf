@@ -1,7 +1,6 @@
 locals {
-  this_instance_id      = var.existing_instance_id != "" ? var.existing_instance_id : concat(alicloud_mongodb_sharding_instance.this.*.id, [""])[0]
-  create_more_resources = var.existing_instance_id != "" || var.create ? true : false
-  project               = "acs_mongodb"
+  this_instance_id = var.existing_instance_id != "" ? var.existing_instance_id : concat(alicloud_mongodb_sharding_instance.this[*].id, [""])[0]
+  project          = "acs_mongodb"
 }
 
 resource "alicloud_mongodb_sharding_instance" "this" {
@@ -20,14 +19,14 @@ resource "alicloud_mongodb_sharding_instance" "this" {
   dynamic "mongo_list" {
     for_each = var.mongo_list
     content {
-      node_class = lookup(mongo_list.value, "node_class")
+      node_class = mongo_list.value["node_class"]
     }
   }
   dynamic "shard_list" {
     for_each = var.shard_list
     content {
-      node_class   = lookup(shard_list.value, "node_class")
-      node_storage = lookup(shard_list.value, "node_storage")
+      node_class   = shard_list.value["node_class"]
+      node_storage = shard_list.value["node_storage"]
     }
   }
 }

@@ -144,11 +144,6 @@ output "this_alarm_rule_enabled" {
   value       = module.use_existing_mongodb_sharding.this_alarm_rule_enabled
 }
 
-output "this_alarm_rule_webhook" {
-  description = "The webhook that is called when the alarm is triggered. "
-  value       = module.use_existing_mongodb_sharding.this_alarm_rule_webhook
-}
-
 output "this_alarm_rule_cpu_utilization_status" {
   description = "The current alarm cpu utilization rule status. "
   value       = module.use_existing_mongodb_sharding.this_alarm_rule_cpu_utilization_status
