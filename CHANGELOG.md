@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-mongodb-sharding/compare/v2.0.0...v3.0.0) (2026-04-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* add provider version constraint for aliyun/alicloud
+
+### Features
+
+* add provider version constraint for aliyun/alicloud ([decca72](https://github.com/alibabacloud-automation/terraform-alicloud-mongodb-sharding/commit/decca7257e9b98752a57085d1d93e40613d9d652))
+
 ## 2.1.0 (Unreleased)
 ## 2.0.0 (November 21, 2024)
 
